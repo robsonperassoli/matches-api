@@ -6,7 +6,7 @@
             [api.teams :as teams]
             [api.players :as players]
             [api.match-results :as match-results]
-            [])
+            [environ.core :refer [env]])
   (:gen-class))
 
 (defn json-response [data & [status]]

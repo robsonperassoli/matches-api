@@ -10,7 +10,10 @@
                  [clj-json "0.5.3"]
                  [com.novemberain/monger "3.1.0"]
                  [environ "1.1.0"]]
+  :min-lein-version "2.0.0"
   :plugins [[lein-environ "1.1.0"]]
+  :hooks [environ.leiningen.hooks]
+  :uberjar-name "matches-api-standalone.jar"
   :main ^:skip-aot api.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
