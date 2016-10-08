@@ -11,8 +11,7 @@
 (defn stringfy-ids [vector]
   (map stringfy-id vector))
 
-(defn new-object-id [& params]
-  (let [id (first params)]
-      (if (empty? id)
-          (ObjectId.)
-          (ObjectId. id))))
+(defn new-object-id [& [id]]
+  (if (empty? id)
+      (ObjectId.)
+      (ObjectId. id)))

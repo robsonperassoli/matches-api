@@ -1,11 +1,12 @@
 (ns api.core
   (:use compojure.core)
   (:use ring.middleware.json-params)
-  (:use ring.adapter.jetty)
-  (:require [clj-json.core :as json])
-  (:require [api.teams :as teams])
-  (:require [api.players :as players])
-  (:require [api.match-results :as match-results])
+  (:require [clj-json.core :as json]
+            [ring.adapter.jetty :as jetty]
+            [api.teams :as teams]
+            [api.players :as players]
+            [api.match-results :as match-results]
+            [])
   (:gen-class))
 
 (defn json-response [data & [status]]
@@ -38,7 +39,6 @@
 (def app
    (-> handler wrap-json-params))
 
-(defn -main
-  "Start the api server"
-  [& args]
-  (run-jetty app {:port 8080}))
+(defn -main [& [port]]
+  (let [port (Integer. (or port (env :port) 8080))]
+    (jetty/run-jetty app {:port port :join? false})))
