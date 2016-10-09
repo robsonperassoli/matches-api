@@ -15,3 +15,9 @@
   (if (empty? id)
       (ObjectId.)
       (ObjectId. id)))
+
+(defn is-valid-id? [id]
+  (try
+    (new-object-id id)
+    true
+    (catch Exception e false)))

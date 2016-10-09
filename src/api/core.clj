@@ -6,6 +6,7 @@
             [api.teams :as teams]
             [api.players :as players]
             [api.match-results :as match-results]
+            [api.util :as util]
             [environ.core :refer [env]])
   (:gen-class))
 
@@ -17,6 +18,9 @@
 (defroutes handler
   (GET "/teams" []
     (-> (teams/list) json-response))
+
+  (GET "/teams/:name" [name]
+    (-> (teams/get-by-name name) json-response))
 
   (GET "/players" []
     (-> (players/list) json-response))
