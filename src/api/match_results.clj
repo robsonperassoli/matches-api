@@ -2,7 +2,8 @@
   (:require [monger.collection :as mc]
             [api.util :refer [identify stringfy-id stringfy-ids new-object-id]]
             [api.db :refer [db]]
-            [api.players :as players]))
+            [api.players :as players]
+            [api.teams :as teams]))
 
 (defn list []
   (-> (mc/find-maps db :match-results) stringfy-ids))
