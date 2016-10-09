@@ -1,6 +1,6 @@
 (ns api.core
-  (:use compojure.core)
-  (:use ring.middleware.json-params)
+  (:use [compojure.core]
+        [ring.middleware.json-params])
   (:require [clj-json.core :as json]
             [ring.adapter.jetty :as jetty]
             [api.teams :as teams]
@@ -16,25 +16,25 @@
 
 (defroutes handler
   (GET "/teams" []
-    (json-response (teams/list)))
+    (-> (teams/list) json-response))
 
   (GET "/players" []
-    (json-response (players/list)))
+    (-> (players/list) json-response))
 
   (POST "/players" [player]
-    (json-response (players/post player)))
+    (-> (players/post player) json-response))
 
   (PUT "/players/:id" [id player]
-    (json-response (players/put id player)))
+    (-> (players/put id player) json-response))
 
   (DELETE "/players/:id" [id]
-    (json-response (players/delete id)))
+    (-> (players/delete id) json-response))
 
   (GET "/match-results" []
-    (json-response (match-results/list)))
+    (-> (match-results/list) json-response))
 
   (POST "/match-results" [result]
-    (json-response (match-results/post result))))
+    (-> (match-results/post result) json-response)))
 
 (def app
    (-> handler wrap-json-params))

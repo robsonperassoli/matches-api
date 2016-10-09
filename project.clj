@@ -12,7 +12,6 @@
                  [environ "1.1.0"]]
   :min-lein-version "2.0.0"
   :plugins [[lein-environ "1.1.0"]]
-  :hooks [environ.leiningen.hooks]
   :uberjar-name "matches-api-standalone.jar"
   :main ^:skip-aot api.core
   :target-path "target/%s"
