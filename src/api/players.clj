@@ -9,16 +9,16 @@
 (defn post [player]
     (-> (mc/insert-and-return db :players (identify player)) stringfy-id))
 
-(defn put [id player]
-  (mc/update-by-id db :players (new-object-id id) player)
-  (get id))
-
-(defn get [id]
+(defn get-by-id [id]
   (when (is-valid-id? id)
         (-> (mc/find-map-by-id db :players (new-object-id id)) stringfy-id)))
+
+(defn put [id player]
+  (mc/update-by-id db :players (new-object-id id) player)
+  (get-by-id id))
 
 (defn delete [id]
   (mc/remove-by-id db :players (new-object-id id)))
 
 (defn exists? [id]
-  (not (= (get id) nil)))
+  (not (nil? (get-by-id id))))
