@@ -1,4 +1,4 @@
-# soccer-win-counter
+# matches-api
 Manage you wins/losses against your buddies on soccer games 
 
 ## API definition
