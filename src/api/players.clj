@@ -8,6 +8,9 @@
 (defn list []
   (-> (mc/find-maps db :players) stringfy-ids))
 
+(defn get-by-name [name]
+  (-> (mc/find-one-as-map db :players {:name name}) stringfy-id))
+
 (defn is-valid? [player]
   (let [name (:name player)]
     (and
@@ -22,9 +25,6 @@
 (defn get-by-id [id]
   (when (is-valid-id? id)
         (-> (mc/find-map-by-id db :players (new-object-id id)) stringfy-id)))
-
-(defn get-by-name [name]
-  (-> (mc/find-one-as-map db :players {:name name}) stringfy-id))
 
 (defn put [id player]
   (if (is-valid? player)
