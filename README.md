@@ -1,36 +1,33 @@
-# api
+# soccer-win-counter
+Manage you wins/losses against your buddies on soccer games 
 
-FIXME: description
+## API definition
+### GET /teams
+```json
+[{
+  "name": "Arsenal",
+  "league": "Premiere league",
+  "image": "<base64image>" 
+}]
+```
 
-## Installation
+### GET /players
+```json
+[{
+  "name": "Robson"
+}]
+```
 
-Download from http://example.com/FIXME.
+### GET /match-results
+```json
+[{
+  "home_team": "<team_name>",
+  "home_team_goals": 1,
+  "home_team_player": "<player_uid>",
+  "away_team": "<team_name>",
+  "away_team_goals": 2,
+  "home_team_player": "<player_uid>",
+  "date_time": "2016-10-01 00:00:00"
+}]
+```
 
-## Usage
-
-FIXME: explanation
-
-    $ java -jar api-0.1.0-standalone.jar [args]
-
-## Options
-
-FIXME: listing of options this app accepts.
-
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
-
-## License
-
-Copyright © 2016 FIXME
-
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
